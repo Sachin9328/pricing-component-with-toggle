@@ -1,0 +1,242 @@
+:root {
+    --gradient: linear-gradient(to bottom right, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+    --gradient-900: hsl(237, 63%, 64%);
+    --neutral-grey-100: hsl(240, 78%, 98%);
+    --neutral-grey-300: hsl(234, 14%, 74%);
+    --neutral-grey-600: hsl(233, 13%, 49%);
+    --neutral-grey-900: hsl(232, 13%, 33%);
+    --neutral-100: #fff;
+    --neutral-900: #000;
+}
+
+*,
+*::after, 
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    background: #F6F6FE url("../images/bg-top.svg") no-repeat;
+    background-position: top right -170px; 
+    text-align: center;
+}
+
+.neutral-grey-100 {
+    color: var(--neutral-grey-100);
+}
+
+.neutral-grey-300 {
+    color: var(--neutral-grey-300);
+}
+
+.neutral-grey-600 {
+    color: var(--neutral-grey-600);
+}
+
+.neutral-grey-900 {
+    color: var(--neutral-grey-900);
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: .8em;
+}
+
+h2 {
+    font-size: 3em;
+    margin: 1rem 0;
+}
+
+.container {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.header {
+    padding: 2.4em;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--neutral-100);
+    border-radius: .8em;
+    padding: 1em 2.6em;
+    margin-bottom: 2.5em;
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.1);
+}
+
+.card:nth-child(odd) {
+    background: var(--gradient);
+    color: var(--neutral-100);
+}
+
+.card > div:not(:last-child) {
+    border-bottom: 1px solid rgba(183, 184, 194, 0.45);
+}
+
+.card-inverse > div:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+section div {
+    padding: 1em 0;
+}
+
+.button {
+    text-transform: uppercase;
+    padding: 1em 2em;
+    margin: 2.6em 0 1.2em 0;
+    background: var(--gradient);
+    border: 1px solid var(--neutral-100);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--neutral-100);
+}
+
+.button:hover, .button:focus {
+    background: var(--neutral-100);
+    border: 1px solid hsl(237, 63%, 24%);
+    color: var(--gradient-900);
+    outline: none;
+}
+
+.button-inverse {
+    background: var(--neutral-100);
+    text-decoration: none;
+    color: var(--gradient-900);
+}
+
+.button-inverse:hover, .button-inverse:focus {
+    background: hsl(237, 63%, 64%);
+    border: 1px solid var(--neutral-100);
+    color: var(--neutral-100);
+    outline: none;
+}
+
+.attribution { 
+    font-size: 11px; 
+    text-align: center; 
+    margin-bottom: 1rem;
+}
+
+.attribution a { 
+    color: hsl(228, 45%, 44%); 
+}
+
+/*-------- TOGGLER --------*/
+
+ .toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+label {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 65px;
+	height: 35px;
+	background: var(--gradient);
+	display: block;
+	border-radius: 100px;
+	position: relative;
+    margin: 1.4em;
+}
+
+label:after {
+	content: '';
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	width: 27px;
+	height: 27px;
+	background: #fff;
+	border-radius: 110px;
+    -webkit-transition: all 350ms;
+        -moz-transition: all 350ms;
+            transition: all 350ms; 
+}
+
+input:checked + label {
+	background: var(--gradient);
+}
+
+input + label:hover, input + label:focus-within {
+	background: hsl(236, 72%, 81%)
+}
+
+input:checked + label:after {
+	transform: translate3d(114%, 0, 0);
+}
+
+@media (min-width: 1440px) {
+    body {
+        font-size: 16px;
+        background-image: url("../images/bg-top.svg"), url("../images/bg-bottom.svg");
+        background-repeat: no-repeat, no-repeat;
+        background-position: 100% 0%, 0% 130%; 
+        background-size: 24%, 24%;
+    }
+
+    .container {
+        display: grid;   
+        grid-template-areas: 
+            "header header header"
+            "basic professional master"
+            "attribution attribution attribution"; 
+        align-items: center;
+        width: 65%;
+    }
+
+    .header {
+        grid-area: header;
+    }
+
+    h2 {
+        font-size: 4em;
+    }
+
+    h3 {
+        font-size: 1.3033333333333335em;
+    }
+
+    .card-inverse {
+        padding: 3em 2em;
+    }
+
+    .card {
+        margin-bottom: 0;
+    }
+
+    #basic {
+        grid-area: basic;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    
+    #professional {
+        grid-area: professional;
+    }
+    
+    #master {
+        grid-area: master;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .attribution {
+        grid-area: attribution;
+        margin-top: 4em;
+    }
+}
